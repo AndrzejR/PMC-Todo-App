@@ -24,7 +24,7 @@ def write_todos(todos_to_write):
 
 def show_todos(todos_to_show):
     """
-    Prints the todos one line per todo.
+    Prints the todos one line per to-do.
     :param todos_to_show: List of todos to show
     :return: None
     """
