@@ -26,10 +26,12 @@ while True:
     if event == sg.WIN_CLOSED or event == "Exit":
         break
     elif event == 'Convert':
-        feet = int(values['feet_input'])
-        inches = int(values['inches_input'])
-        result = feet * 30.48 + inches * 2.54
-        window['output_label'].update(value=f"{result} cms")
-
+        try:
+            feet = int(values['feet_input'])
+            inches = int(values['inches_input'])
+            result = feet * 30.48 + inches * 2.54
+            window['output_label'].update(value=f"{result} cms")
+        except ValueError:
+            sg.popup("Please provide feet and inches as two numbers")
 
 window.close()
