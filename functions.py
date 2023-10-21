@@ -1,7 +1,7 @@
 import os
 import pathlib
 
-FILEPATH = './data/todos.txt'
+FILEPATH = './files/todos.txt'
 
 if not os.path.exists(FILEPATH):
     os.mkdir(pathlib.Path(FILEPATH).parent)

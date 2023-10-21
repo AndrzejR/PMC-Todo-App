@@ -2,13 +2,16 @@ import PySimpleGUI as sg
 import zipfile
 import pathlib
 
+FONT = ('Mono', 14)
+BUTTON_FONT = ('Mono', 11)
+
 files_to_zip_label = sg.Text("Select files to zip")
 files_input = sg.Input(key='files_input')
-choose_button1 = sg.FilesBrowse("Choose")
+choose_button1 = sg.FilesBrowse("Choose files", font=BUTTON_FONT, target='files_input')
 
 dest_folder_label = sg.Text("Select destination folder")
 folder_input = sg.Input(key='folder_input')
-choose_button2 = sg.FolderBrowse("Choose")
+choose_button2 = sg.FolderBrowse("Choose folder", font=BUTTON_FONT, target='folder_input')
 
 dest_file_label = sg.Text("Enter destination filename")
 filename_input = sg.Input(key='filename_input')
@@ -16,13 +19,15 @@ filename_input = sg.Input(key='filename_input')
 compress_button = sg.Button("Compress")
 output_label = sg.Text(key='output_label')
 
-layout = [[files_to_zip_label, files_input, choose_button1],
-          [dest_folder_label, folder_input, choose_button2],
-          [dest_file_label, filename_input],
+col1 = sg.Column([[files_to_zip_label], [dest_folder_label], [dest_file_label]])
+col2 = sg.Column([[files_input], [folder_input], [filename_input]])
+col3 = sg.Column([[choose_button1], [choose_button2]])
+
+layout = [[col1, col2, col3],
           [compress_button, output_label]]
 
 window = sg.Window("Zipper", layout=layout,
-                   font=('Mono', 14))
+                   font=FONT)
 
 while True:
     event, values = window.read()
