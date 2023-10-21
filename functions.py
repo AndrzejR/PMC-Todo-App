@@ -1,4 +1,12 @@
-FILEPATH = './files/todos.txt'
+import os
+import pathlib
+
+FILEPATH = './data/todos.txt'
+
+if not os.path.exists(FILEPATH):
+    os.mkdir(pathlib.Path(FILEPATH).parent)
+    with open(FILEPATH, 'w') as file:
+        pass
 
 
 def read_todos():
